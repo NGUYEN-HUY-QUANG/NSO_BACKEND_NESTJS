@@ -22,7 +22,13 @@ export class AccountService {
       throw new BadRequestException('Mat khau cu khong chinh xac');
     }
 
+    if (dto.oldPassword === dto.newPassword) {
+      throw new BadRequestException('Mat khau moi phai khac mat khau cu');
+    }
+
     account.password = dto.newPassword;
-    return this.accountRepository.save(account);
+    await this.accountRepository.save(account);
+
+    return { message: 'Mat khau da duoc thay doi thanh cong' };
   }
 }
