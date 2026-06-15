@@ -22,13 +22,13 @@ export class Player {
   @Column()
   mapId: string;
 
-  @Column()
+  @Column({nullable: true})
   aoId: string;
 
-  @Column()
+  @Column({nullable: true})
   quanId: string;
 
-  @Column()
+  @Column({nullable: true})
   thuCuoiId: string;
 
   @Column({ default: 0 })
@@ -55,6 +55,6 @@ export class Player {
   @Column()
   kieuToc: string;
 
-  @Column()
+  @Column({nullable: true})
   matNaId: string;
 }
