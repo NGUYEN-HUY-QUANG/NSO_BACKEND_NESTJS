@@ -65,4 +65,21 @@ constructor(
       throw new InternalServerErrorException('Co loi xay ra khi tao nhan vat');
     }
   }
+
+  async getPlayer(id: number) {
+    if (!id) {
+      throw new BadRequestException('Thieu id nhan vat');
+    }
+
+    const player = await this.playerRepository.findOne({ where: { id } });
+
+    if (!player) {
+      throw new BadRequestException('Nhan vat khong ton tai');
+    }
+
+    return {
+      success: true,
+      data: player,
+    };
+  }
 }
